@@ -1,0 +1,6 @@
+target-eclipse/classes
+target/classes
+target/*.log
+target/*.war
+out
+.idea
