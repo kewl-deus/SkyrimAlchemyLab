@@ -35,7 +35,6 @@ class EffectController {
                     //.join(", ")
         }
 
-
         return [
                 effectInstanceList: effects,
                 effectInstanceTotal: EffectImpl.count(),
@@ -43,4 +42,19 @@ class EffectController {
                 effectIndexLinks: effectIndexLinks]
     }
 
+    def show() {
+        if (EffectImpl.get(params.id)){
+            redirect(controller: "effectImpl", action: "show", params: params)
+        } else {
+            redirect(controller: "effectAlias", action: "show", params: params)
+        }
+    }
+
+    def edit() {
+        if (EffectImpl.get(params.id)){
+            redirect(controller: "effectImpl", action: "edit", params: params)
+        } else {
+            redirect(controller: "effectAlias", action: "edit", params: params)
+        }
+    }
 }

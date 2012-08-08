@@ -25,6 +25,8 @@
 					<tr>
 					
 						<g:sortableColumn property="name" title="${message(code: 'recipe.name.label', default: 'Name')}" />
+                        <th>Effekte</th>
+                        <th>Zutaten</th>
 					
 					</tr>
 				</thead>
@@ -33,7 +35,21 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${recipeInstance.id}">${fieldValue(bean: recipeInstance, field: "name")}</g:link></td>
-					
+
+                        <td>
+                            <g:each in="${recipeInstance.effects.sort()}" var="eff" status="effLoopIndex">
+                                <g:link controller="effect" action="show" id="${eff.id}">${eff.name}</g:link>
+                                <g:if test="${recipeInstance.effects.size() < effLoopIndex}"><pre> + </pre></g:if>
+                            </g:each>
+                        </td>
+
+                        <td>
+                            <g:each in="${recipeInstance.ingredients.sort()}" var="ing" status="ingLoopIndex">
+                                <g:link controller="ingredient" action="show" id="${ing.id}">${ing.name}</g:link>
+                                <g:if test="${recipeInstance.ingredients.size() < ingLoopIndex}"><pre> + </pre></g:if>
+                            </g:each>
+                        </td>
+
 					</tr>
 				</g:each>
 				</tbody>

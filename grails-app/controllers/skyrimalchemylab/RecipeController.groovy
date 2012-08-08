@@ -12,7 +12,30 @@ class RecipeController {
 
     def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [recipeInstanceList: Recipe.list(params), recipeInstanceTotal: Recipe.count()]
+
+        def recipes = Recipe.list(params)
+
+        /*
+        def ingredientLinks = [:]
+        recipes.each { recipe ->
+            ingredientLinks[recipe.id] = recipe.ingredients.sort()
+                    .collect { link(controller: 'ingredient', action: 'show', id: it.id, it.name) }
+                    .join(" + ")
+        }
+
+        def effectLinks = [:]
+        recipes.each {recipe ->
+            effectLinks[recipe.id] = recipe.effects.sort()
+                    .collect { link(controller: 'effect', action: 'show', id: it.id, it.name) }
+                    .join(" + ")
+        }
+        */
+
+        return [recipeInstanceList: recipes,
+                recipeInstanceTotal: Recipe.count()
+                //ingredientLinks: ingredientLinks,
+                //effectLinks: effectLinks
+        ]
     }
 
     def create() {

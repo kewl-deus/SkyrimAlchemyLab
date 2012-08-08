@@ -19,7 +19,9 @@
 	</head>
 	<body>
 		<div id="grailsLogo" role="banner">
-            <a href="http://www.elderscrolls.com/skyrim/"><img src="${resource(dir: 'images', file: 'skyrim_logo.jpg')}" alt="The Elder Scrolls V: Skyrim"/></a></div>
+            <!--a href="http://www.elderscrolls.com/skyrim/"><img src="${resource(dir: 'images', file: 'skyrim_logo.jpg')}" alt="The Elder Scrolls V: Skyrim"/></a-->
+            <a href="${createLink(uri: '/')}"><img src="${resource(dir: 'images', file: 'skyrim_logo.jpg')}" alt="The Elder Scrolls V: Skyrim"/></a>
+        </div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
