@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
+		<title>Skyrim Alchemy Lab</title>
 		<style type="text/css" media="screen">
 			#status {
 				background-color: #eee;
@@ -103,20 +103,34 @@
 			</ul>
 		</div>
 		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
+			<h1>Skyrim Alchemy Lab</h1>
+
+            <div>
+                <h2>Views:</h2>
+                <ul style="list-style-position: inside;">
+                    <li style="margin: 0.25em 0;"><g:link controller="effect">Effekte</g:link></li>
+                    <li style="margin: 0.25em 0;"><g:link controller="ingredient">Zutaten</g:link></li>
+                    <li style="margin: 0.25em 0;"><g:link controller="recipe">Rezepte</g:link></li>
+                </ul>
+            </div>
 
 			<div id="controller-list" role="navigation">
 				<h2>Available Controllers:</h2>
 				<ul>
 					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
+						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
 					</g:each>
 				</ul>
 			</div>
+
+            <div>
+                <h2>Debug Links:</h2>
+                <ul style="list-style-position: inside;">
+                    <li style="margin: 0.25em 0;">
+                        <a href="${g.createLink(uri: '/dbconsole')}">DB Console</a>
+                    </li>
+                </ul>
+            </div>
 		</div>
 	</body>
 </html>

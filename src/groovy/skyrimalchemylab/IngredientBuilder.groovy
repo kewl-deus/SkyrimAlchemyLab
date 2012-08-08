@@ -35,7 +35,7 @@ class IngredientBuilder {
             it != null
         }
         
-        IngredientImpl ing = new IngredientImpl(name: name, price: price, weight: weigth, source: source, effects: effects)
+        IngredientImpl ing = new IngredientImpl(name: name, price: price, weight: weigth, source: source, lang: this.lang, effects: effects)
 
         if (!ing.validate()){
             String errMsg = ing.errors.allErrors.join(", ")
@@ -70,5 +70,9 @@ class IngredientBuilder {
 
     void withIngredients(Closure<Ingredient> closure){
         ingredients.each closure
+    }
+
+    int getAmount(){
+        ingredients?.size()
     }
 }

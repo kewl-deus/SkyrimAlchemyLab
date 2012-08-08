@@ -4,7 +4,7 @@ import grails.test.mixin.*
 import org.junit.*
 
 @Mock([EffectImpl, EffectAlias, IngredientImpl, IngredientAlias, Language])
-class IngredientBuilderTest {
+class IngredientBuilderTests {
 
     @Test
     void testBuildIngredient() {

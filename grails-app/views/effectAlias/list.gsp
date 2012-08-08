@@ -24,10 +24,10 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="name" title="${message(code: 'effectAlias.name.label', default: 'Name')}" />
-					
-						<th><g:message code="effectAlias.aliased.label" default="Aliased" /></th>
-					
+						<g:sortableColumn property="name" title="${message(code: 'effectAlias.name.label', default: 'Alias')}" />
+
+						<g:sortableColumn property="aliased" title="${message(code: 'effectAlias.aliased.label', default: 'Original')}" />
+
 						<th><g:message code="effectAlias.lang.label" default="Lang" /></th>
 					
 					</tr>
@@ -38,7 +38,7 @@
 					
 						<td><g:link action="show" id="${effectAliasInstance.id}">${fieldValue(bean: effectAliasInstance, field: "name")}</g:link></td>
 					
-						<td>${fieldValue(bean: effectAliasInstance, field: "aliased")}</td>
+						<td><g:link controller="effectImpl" action="show" id="${effectAliasInstance.aliased.id}">${fieldValue(bean: effectAliasInstance, field: "aliased")}</g:link></td>
 					
 						<td>${fieldValue(bean: effectAliasInstance, field: "lang")}</td>
 					

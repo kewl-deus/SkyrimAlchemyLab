@@ -4,7 +4,6 @@ class IngredientImpl extends Ingredient{
 
     int price
     float weight
-    String source
 
     static hasMany = [effects: Effect]
 

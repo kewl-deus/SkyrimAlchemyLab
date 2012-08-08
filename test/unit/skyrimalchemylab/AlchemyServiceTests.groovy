@@ -10,53 +10,30 @@ import org.junit.Ignore
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(AlchemyService)
-@Mock([EffectImpl, EffectAlias, IngredientImpl, IngredientAlias, Language])
+@Mock([IngredientImpl, EffectImpl, Language])
 class AlchemyServiceTests {
 
-    @Before
-    void insertLanguages(){
-        Language langDE = new Language(name: "Deutsch", isoCode: "de")
-        langDE.save(flush: true)
-        Language langEN = new Language(name: "Englisch", isoCode: "en")
-        langEN.save(flush: true)
+
+    void testFindIngredientsWithEffect(){
+        Language lang = new Language(name: "Deutsch", isoCode: "de")
+        lang.save()
+
+        10.times { i ->
+            new EffectImpl(name: "eff${i+1}", lang: lang).save()
+        }
+
+        IngredientBuilder ib = new IngredientBuilder(lang)
+        ib.ingredient(name: "ing1", effects: ["eff1", "eff2", "eff3", "eff4"])
+        ib.ingredient(name: "ing2", effects: ["eff2", "eff3"])
+        ib.ingredient(name: "ing3", effects: ["eff3", "eff5", "eff7"])
+        ib.withIngredients { ing -> ing.save() }
+
+        println "effs: $EffectImpl.count"
+        println "ings: $IngredientImpl.count"
+
+        def onlyEff1 = service.findIngredientsWithEffect("eff1")
+        assert onlyEff1.size() == 1
+        assert onlyEff1.get(0).name == "eff1"
     }
 
-    @Ignore("tested withing ingredients insertion")
-    void testEffectInsertion() {
-        assert EffectImpl.count() == 0
-        assert EffectAlias.count() == 0
-
-        def service = new AlchemyService()
-        service.insertEffects()
-        service.insertEffectAliases()
-
-        assert EffectImpl.count() > 0
-        assert EffectAlias.count() > 0
-    }
-
-    void testIngredientInsertion() {
-
-        def service = new AlchemyService()
-
-        //effects are needed for building ingredients
-        assert EffectImpl.count() == 0
-        assert EffectAlias.count() == 0
-
-        service.insertEffects()
-        service.insertEffectAliases()
-
-        assert EffectImpl.count() > 0
-        assert EffectAlias.count() > 0
-
-        //ingredients
-
-        assert IngredientImpl.count() == 0
-        assert IngredientAlias.count() == 0
-
-        service.insertIngredients()
-        service.insertIngredientAliases()
-
-        assert IngredientImpl.count() > 0
-        assert IngredientAlias.count() > 0
-    }
 }

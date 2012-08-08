@@ -11,7 +11,7 @@ class EffectBuilder {
     }
 
     EffectImpl effect(String name, String nature){
-        EffectImpl effect = new EffectImpl(name:name, positive: nature == '+')
+        EffectImpl effect = new EffectImpl(name:name, lang: this.lang, positive: nature == '+')
         this.effects << effect
         effect
     }
@@ -37,5 +37,9 @@ class EffectBuilder {
 
     void withEffects(Closure<Effect> closure){
         effects.each closure
+    }
+
+    int getAmount(){
+        effects?.size()
     }
 }

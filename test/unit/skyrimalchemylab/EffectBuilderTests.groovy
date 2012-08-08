@@ -6,9 +6,9 @@ class EffectBuilderTests {
 
     @Test
     void testEffectBuilding(){
-        def eb = new EffectBuilder(new Language(name: "Englisch", isoCode: "en"))
-        eb.effect ("Anfälligkeit für Blitz", '-')
-        eb.effect ("Ausdauer regenerieren", '+')
+        def eb = new EffectBuilder(new Language(name: "Deutsch", isoCode: "de"))
+        def anfBlitz = eb.effect ("Anfälligkeit für Blitz", '-')
+        def ausRegen = eb.effect ("Ausdauer regenerieren", '+')
         
         int counter = 0
         
@@ -16,10 +16,12 @@ class EffectBuilderTests {
             EffectImpl ei = (EffectImpl) eff
             if (ei.name == "Anfälligkeit für Blitz") assert ei.positive == false
             if (ei.name == "Ausdauer regenerieren") assert ei.positive == true
-            println eff
             counter++
         }
         assert counter == 2
+
+        assert anfBlitz.negative == true
+        assert ausRegen.negative == false
     }
 
     @Test

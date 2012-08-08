@@ -36,7 +36,7 @@
 				<li class="fieldcontain">
 					<span id="aliased-label" class="property-label"><g:message code="ingredientAlias.aliased.label" default="Aliased" /></span>
 					
-						<span class="property-value" aria-labelledby="aliased-label"><g:link controller="ingredient" action="show" id="${ingredientAliasInstance?.aliased?.id}">${ingredientAliasInstance?.aliased?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="aliased-label"><g:link controller="ingredientImpl" action="show" id="${ingredientAliasInstance?.aliased?.id}">${ingredientAliasInstance?.aliased?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

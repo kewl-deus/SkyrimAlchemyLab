@@ -14,20 +14,20 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE"
-            logSql = true
+            url = "jdbc:h2:mem:alchemylab;MVCC=TRUE"
+            logSql = false
         }
     }
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:h2:mem:testDb;MVCC=TRUE"
+            url = "jdbc:h2:mem:alchemylabTest;MVCC=TRUE"
         }
     }
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:h2:prodDb;MVCC=TRUE"
+            url = "jdbc:h2:alchemylabProd;MVCC=TRUE"
             pooled = true
             properties {
                maxActive = -1

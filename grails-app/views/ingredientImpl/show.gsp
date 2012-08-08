@@ -46,7 +46,7 @@
 					<span id="effects-label" class="property-label"><g:message code="ingredientImpl.effects.label" default="Effects" /></span>
 					
 						<g:each in="${ingredientImplInstance.effects}" var="e">
-						<span class="property-value" aria-labelledby="effects-label"><g:link controller="effect" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="effects-label"><g:link controller="effectImpl" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

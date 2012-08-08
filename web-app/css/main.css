@@ -11,12 +11,15 @@ h1, h2, h3, h4, h5, h6 {
 /* BASE LAYOUT */
 
 html {
+    /*
 	background-color: #ddd;
 	background-image: -moz-linear-gradient(center top, #aaa, #ddd);
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));
 	background-image: linear-gradient(top, #aaa, #ddd);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');
 	background-repeat: no-repeat;
+	*/
+    background-image: url(../images/Parchment_bg.jpg);
 	height: 100%;
 	/* change the box model to exclude the padding from the calculation of 100% height (IE8+) */
 	-webkit-box-sizing: border-box;
@@ -48,7 +51,7 @@ body {
 }
 
 #grailsLogo {
-	background-color: #abbf78;
+	background-color: #000;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -588,4 +591,8 @@ th:hover, tr:hover {
 a.skip {
 	position: absolute;
 	left: -9999px;
+}
+
+.toxic {
+    color: red;
 }

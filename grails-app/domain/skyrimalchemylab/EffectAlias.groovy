@@ -2,12 +2,10 @@ package skyrimalchemylab
 
 class EffectAlias extends Effect{
 
-    EffectImpl aliased
-    Language lang
+    @Delegate EffectImpl aliased
 
-    @Override
-    boolean isPositive() {
-        return aliased.positive
+    static constraints = {
+        aliased nullable: false
     }
 
     boolean equals(other) {
