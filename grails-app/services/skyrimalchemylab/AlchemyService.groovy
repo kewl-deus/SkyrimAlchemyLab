@@ -9,23 +9,20 @@ class AlchemyService {
     }
 
     def findIngredientsWithEffect(Effect eff){
-
         def ings = IngredientImpl.withCriteria{
             effects {
                 eq 'id', eff.id
             }
             order 'name', 'asc'
         }
-
-//        def qry = IngredientImpl.where {
-//            effects {
-//                name == eff.name
-//            }
-//        }
-//
-//        def ings = qry.list(sort: 'name')
-        
         return ings
     }
 
+    def findAliases(EffectImpl effect){
+        EffectAlias.findByAliased(effect)
+    }
+
+    def findAliases(IngredientImpl ingredient){
+        IngredientAlias.findByAliased(ingredient)
+    }
 }
