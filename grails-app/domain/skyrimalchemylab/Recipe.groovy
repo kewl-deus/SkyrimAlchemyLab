@@ -34,6 +34,13 @@ class Recipe {
         }
     }
 
+
+    boolean isToxic(){
+        int numPos = effects.count {eff -> eff.positive}
+        int numNeg = effects.size() - numPos
+        return numNeg > numPos
+    }
+
     @Override
     String toString() {
         return name

@@ -2,6 +2,9 @@
 <!doctype html>
 <html>
 	<head>
+
+        <r:require module="bootstrap"/>
+
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'recipe.label', default: 'Recipe')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
@@ -28,7 +31,7 @@
 			</g:hasErrors>
 			<g:form action="save" >
 				<fieldset class="form">
-					<g:render template="form"/>
+					<g:render template="twbform"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

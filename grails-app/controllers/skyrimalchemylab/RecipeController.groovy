@@ -15,21 +15,20 @@ class RecipeController {
 
         def recipes = Recipe.list(params)
 
-        /*
-        def ingredientLinks = [:]
-        recipes.each { recipe ->
-            ingredientLinks[recipe.id] = recipe.ingredients.sort()
-                    .collect { link(controller: 'ingredient', action: 'show', id: it.id, it.name) }
-                    .join(" + ")
-        }
 
-        def effectLinks = [:]
-        recipes.each {recipe ->
-            effectLinks[recipe.id] = recipe.effects.sort()
-                    .collect { link(controller: 'effect', action: 'show', id: it.id, it.name) }
-                    .join(" + ")
-        }
-        */
+//        def ingredientLinks = [:]
+//        recipes.each { recipe ->
+//            ingredientLinks[recipe.id] = recipe.ingredients.sort()
+//                    .collect { link(controller: 'ingredient', action: 'show', id: it.id, it.name) }
+//                    .join(" + ")
+//        }
+//
+//        def effectLinks = [:]
+//        recipes.each {recipe ->
+//            effectLinks[recipe.id] = recipe.effects.sort()
+//                    .collect { link(controller: 'effect', action: 'show', id: it.id, it.name) }
+//                    .join(" + ")
+//        }
 
         return [recipeInstanceList: recipes,
                 recipeInstanceTotal: Recipe.count()
@@ -123,4 +122,5 @@ class RecipeController {
             redirect(action: "show", id: params.id)
         }
     }
+
 }

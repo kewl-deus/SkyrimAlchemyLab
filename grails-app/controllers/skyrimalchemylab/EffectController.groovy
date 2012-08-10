@@ -12,7 +12,6 @@ class EffectController {
     }
 
     def list() {
-        //params.max = Math.min(params.max ? params.int('max') : 10, 100)
         def startsWith = 'A'
         if (params.startsWith) startsWith = params.startsWith
 

@@ -41,17 +41,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${ingredientImplInstance?.effects}">
-				<li class="fieldcontain">
-					<span id="effects-label" class="property-label"><g:message code="ingredientImpl.effects.label" default="Effects" /></span>
-					
-						<g:each in="${ingredientImplInstance.effects}" var="e">
-						<span class="property-value" aria-labelledby="effects-label"><g:link controller="effectImpl" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${ingredientImplInstance?.price}">
 				<li class="fieldcontain">
 					<span id="price-label" class="property-label"><g:message code="ingredientImpl.price.label" default="Price" /></span>
@@ -69,6 +58,19 @@
 					
 				</li>
 				</g:if>
+
+                <g:if test="${ingredientImplInstance?.effects}">
+                    <li class="fieldcontain">
+                        <span id="effects-label" class="property-label"><g:message code="ingredientImpl.effects.label" default="Effects" /></span>
+
+                        <g:each in="${ingredientImplInstance.effects?.sort({it.name})}" var="e">
+                            <span class="property-value" aria-labelledby="effects-label">
+                                <g:link controller="effectImpl" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link>
+                            </span>
+                        </g:each>
+
+                    </li>
+                </g:if>
 			
 			</ol>
 			<g:form>

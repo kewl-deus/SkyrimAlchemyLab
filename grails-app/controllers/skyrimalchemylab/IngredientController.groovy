@@ -10,8 +10,12 @@ class IngredientController {
     }
 
     def list() {
+        if (!session.lang){
+            session.lang = grailsApplication.config.skyrim.alchemylab.default.lang
+        }
+        Language lang = Language.findByIsoCode(session.lang)
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [ingredientInstanceList: Ingredient.list(params), ingredientInstanceTotal: Ingredient.count()]
+        [ingredientInstanceList: Ingredient.findByLang(lang, params), ingredientInstanceTotal: Ingredient.countByLang(lang)]
     }
 
     def show() {

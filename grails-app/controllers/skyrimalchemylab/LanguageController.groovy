@@ -4,6 +4,10 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class LanguageController {
 
+    static scaffold = true
+    static navigation = ["list", "create"]
+
+    /*
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -100,4 +104,5 @@ class LanguageController {
             redirect(action: "show", id: params.id)
         }
     }
+    */
 }

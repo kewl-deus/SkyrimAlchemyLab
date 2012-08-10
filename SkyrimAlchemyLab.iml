@@ -48,6 +48,12 @@
       <library name="Grails User Library (SkyrimAlchemyLab)">
         <CLASSES>
           <root url="file://$MODULE_DIR$/lib" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jodd/jodd/jars/jodd-3.3.1.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/asm/asm/jars/asm-3.2.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jodd/jodd-wot/jars/jodd-wot-3.3.1.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/joda-time/joda-time/jars/joda-time-2.0.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jadira.usertype/usertype.spi/jars/usertype.spi-1.9.jar!/" />
+          <root url="jar://$USER_HOME$/.grails/ivy-cache/org.jadira.usertype/usertype.jodatime/jars/usertype.jodatime-1.9.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
