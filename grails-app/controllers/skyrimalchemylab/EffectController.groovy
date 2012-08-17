@@ -12,33 +12,30 @@ class EffectController {
     }
 
     def list() {
-        def startsWith = 'A'
-        if (params.startsWith) startsWith = params.startsWith
+        def effectLetters = EffectImpl.list().collect { it.name[0] }
 
-        def effectIndexLetters = EffectImpl.list().collect { it.name[0] }.toSet().sort()
-
-        def effectIndexLinks = effectIndexLetters.collect { letter ->
-            link(controller: 'effect', action: 'list', params: [startsWith: letter], letter)
-        }
+        def pagination = ControllerUtils.createAlphabeticPagination(effectLetters, params.startsWith)
 
         def effects = EffectImpl.createCriteria().list {
-            like 'name', startsWith + '%'
+            like 'name', pagination.current + '%'
         }
 
         def ingMap = [:]
-
         effects.each { eff ->
-            def ingsWithEffect = alchemyService.findIngredientsWithEffect(eff)
-            ingMap[eff.id] = ingsWithEffect
-                    .collect { link(controller: 'ingredientImpl', action: 'show', id: it.id, it.name) }
-                    //.join(", ")
+            ingMap[eff.id] = alchemyService.findIngredientsWithEffect(eff)
+        }
+
+        def aliasMap = [:]
+        effects.each {eff ->
+            aliasMap[eff.id] = alchemyService.findAliases(eff)
         }
 
         return [
                 effectInstanceList: effects,
-                effectInstanceTotal: EffectImpl.count(),
                 ingredientsWithEffect: ingMap,
-                effectIndexLinks: effectIndexLinks]
+                pagination: pagination,
+                effectAliases: aliasMap
+                ]
     }
 
     def show() {

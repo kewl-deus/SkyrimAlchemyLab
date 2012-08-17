@@ -38,7 +38,7 @@ class RecipeController {
     }
 
     def create() {
-        [recipeInstance: new Recipe(params)]
+        [recipeInstance: new Recipe(params), effectList: EffectImpl.list(sort: 'name'), ingredientList:IngredientImpl.list(sort: 'name')]
     }
 
     def save() {
