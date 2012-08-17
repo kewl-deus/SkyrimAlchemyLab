@@ -2,7 +2,7 @@ package skyrimalchemylab
 
 class ControllerUtils {
 
-    def createAlphabeticPagination(Collection letters, String currentLetter){
+    static Map createAlphabeticPagination(Collection letters, String currentLetter){
         def pagination = [:]
 
         pagination.letters = letters.unique().sort()
